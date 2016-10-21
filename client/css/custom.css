@@ -1,0 +1,21 @@
+#navigation ul
+{
+  margin: 0;
+  padding: 0;
+}
+
+#navigation ul li
+{
+  list-style-type: none;
+  display: inline;
+}
+
+#navigation li:before
+{
+  content: "|";
+}
+
+#navigation li:first-child:before
+{
+  content: none;
+}

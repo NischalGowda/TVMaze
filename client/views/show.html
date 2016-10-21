@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="css/custom.css">
+</head>
+
+<body>
+<div ng-if = "shows">
+	<div class="container" style="background-color:DimGray;color:White">
+    <div class="panel-heading">
+    <h2>{{shows.name}}</h2>	
+	    <div id="navigation">
+	    	<ul>
+	    		<h4><li ng-repeat="s in shows.genres"> {{s}} </li></h4>
+	    	</ul>
+	    </div>
+
+		<div class="row">
+		 	<div class="col-sm-3">
+				<div ng-if="shows.image.medium == null">
+	    			<img src="/image/pic.jpg" height="250" width="210">
+	   			</div>   			
+	    			<img src="{{shows.image.medium}}">
+	        </div>
+	    		
+	    	<div class="col-sm-8">
+				<h3>Summary</h3><hr>
+				<p align="justify" ng-bind-html='shows.summary | trustHTML'></p>
+			</div>
+		</div>
+	
+	<div class="row">
+	 	<div class="col-sm-3">
+	 	</div>
+	 		<div class="container">
+	 			<div class="col-sm-8">
+	 				<div class="panel-heading">
+						<h3>Cast</h3>
+  						<div ng-repeat="m in shows._embedded.cast"> 
+  						<table class="table table-stripped" style="color:White">
+  							<tr><td>
+  								<div ng-if="m.person.image.medium == null && m.character.image.medium == null">
+	  								<img src="/image/pic2.jpg" height="270" width="210">
+	  							</div>
+	  							<div ng-if="m.person.image.medium == null && m.character.image.medium != null">
+	  								<img src={{m.character.image.medium}}>
+	  							</div>
+	  							<div ng-if="m.person.image.medium != null">
+	  								<img src={{m.person.image.medium}}>
+	  							</div>
+  							</td>
+  							<td>
+  								<br><br><br><h4>{{m.person.name}} ... {{m.character.name}}</h4>
+  							</td>
+  							</tr>  								  							
+  						</table>
+  						</div>
+	  				</div>
+				</div>
+			</div>
+	</div>
+	</div>	
+	</div>
+</div>	
+</body>
+</html>	
+
+
+
+
+
